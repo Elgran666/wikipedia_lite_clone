@@ -1,0 +1,26 @@
+{% extends "encyclopedia/layout.html" %}
+
+<!-- Add the title of the page -->
+{% block title %}
+{{ article_name }}
+{% endblock %}
+
+
+<!-- Add the navigation content? of the page -->
+{% block nav %}
+{% endblock %}
+
+
+
+<!-- Add the body of the page -->
+{% block body %}
+<!-- Add the edit Entry button atop the page that links to the edit_page/article_name route -->
+<div>
+    <!-- initially had "CURLY_BRACE% url 'edit_page' %CURLY_BRACE / {{ article_name }}" but this added 1 too many slashes to the url -->
+    <a href="{% url 'edit_page' article_name %}" class="btn btn-primary">
+        Edit Entry
+    </a>
+</div>
+<!-- Display the content of the page with the "safe" functionaltiy to render html proeprly. -->
+<div> {{ content | safe }}</div>
+{% endblock %}

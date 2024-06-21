@@ -1,0 +1,31 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+Entry Not Found
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block body %}
+<h1> Encyclopedia Entry Not Found </h1>
+
+
+{% if matching_entries %}
+    <p>Did you mean one of the following encyclopedia entries?</p>
+
+    {% for entry in matching_entries %}
+        <li> <a href="/wiki/{{ entry }}">{{ entry }}</a></li>
+    {% endfor %}
+
+{% else %}
+    <h2> Please provide a valid encyclopedia entry name </h2>
+    <p> A list of all available encyclopedia entries is below: </p>
+    {% for entry in all_entries %}
+    <li> <a href="wiki/{{ entry }}"> {{ entry }} </a> </li>
+    {% endfor %}
+    <br>
+    <a href="/"> <p> Go back to Homepage </p> </a>
+{% endif %}
+
+{% endblock %}

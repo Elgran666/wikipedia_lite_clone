@@ -1,0 +1,35 @@
+{% extends "encyclopedia/layout.html" %}
+
+<!-- Add the title of the page -->
+{% block title %}
+Edit {{ article_name }}
+{% endblock %}
+
+
+<!-- Add the navigation content? of the page -->
+{% block nav %}
+{% endblock %}
+
+
+
+<!-- Add the body of the page -->
+{% block body %}
+<h1>
+    Edit {{ article_name }}
+</h1>
+
+{% if error %}
+    <p style="font-size: 30; color: red;">{{ error }}</p>
+{% endif %}
+
+<!-- NEED to pass in url 'edit page' article_name to construct the url properly!!!-->
+<form action="{% url 'edit_page' article_name %}" method="POST">
+    <!-- Add crsf token -->
+    {% csrf_token %}
+
+    <!-- The name="content" field required to access data in views.py -->
+    <textarea style="height: 50vh;" name="content">{{ content }}</textarea>
+    <br>
+    <input type="submit" value="Submit" class="btn btn-primary">
+</form>
+{% endblock %}

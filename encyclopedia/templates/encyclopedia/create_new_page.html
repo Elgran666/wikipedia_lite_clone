@@ -1,0 +1,93 @@
+{% extends "encyclopedia/layout.html" %}
+
+<!-- Add the title of the page -->
+{% block title %}
+Create New Page
+{% endblock %}
+
+
+<!-- Add the navigation content? of the page -->
+{% block nav %}
+{% endblock %}
+
+
+
+<!-- Add the body of the page -->
+{% block body %}
+<h1>Create Encyclopedia Entry</h1>
+{% if error %}
+    <p style="font-size: 30; color: red;">{{ error }}</p>
+{% endif %}
+
+
+<form action="{% url 'create_new_page' %}" method="POST">
+    {% csrf_token %}
+    <p>
+        Add a name for the new entry and the text in markdown language below in the fields.<br>Syntax help for the
+        markdown langauge can also be found below.
+    </p>
+    <!-- code for accordion from here:https://www.geeksforgeeks.org/bootstrap-4-accordian/  -->
+    <div class="container">
+        <div id="accordion">
+            <div class="card" style="max-width: 400px; margin-left: 0; margin-bottom: 20px;">
+                <div class="card-header p-0">
+                    <a class="card-link btn btn-secondary btn-block text-left" data-toggle="collapse"
+                        href="#description1">
+                        👉 Click For Markdown Syntax Help
+                    </a>
+                </div>
+                <div id="description1" class="collapse hide" data-parent="#accordion">
+                    <div class="card-body">
+                        <p> Use the following syntax for the new entry:<br><br>
+                            <b>Headings:</b><br>
+                            Use hash symbols (#) at the beginning of a line. The number of hashes indicates the heading
+                            level:<br>
+                            H1 tag = "# Heading 1"<br>
+                            H2 tag = "## Heading 2"<br>
+                            H3 tag = "### Heading 3"<br>
+                            H4, H5, H6 = same applies<br>
+                            <br>
+                            <b>Bold Text:</b><br>
+                            Use double asterisks (**):<br>
+                            <b>This text is bold</b> = "**This text is bold**"<br>
+                            <br>
+                            <b>Links:</b><br>
+                            Use square brackets for the text and parentheses for the URL:<br>
+                            <a href="https://www.example.com">example</a> = "[example](https://www.example.com)"<br>
+                            <br>
+                            <b>Lists:</b><br>
+                            Unordered lists use dashes (-), plus signs (+), or asterisks (*). <br>
+                            Unordered list:<br>
+                        <ul>
+                            <li>Item 1 = "- Item 1"</li>
+                            <li>Item 3 = "+ Item 2"</li>
+                            <li>Item 3 = "* Item 3"</li>
+                        </ul>
+                        Ordered lists use numbers
+                        followed by periods:<br>
+                        <ol>
+                            <li>First item = " 1. First item"</li>
+                            <li>Second item = " 2. Second item"</li>
+                            <li>Third item = " 3. Third item"</li>
+                        </ol>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add name field that we can use to name the page. -->
+    <p>
+        Name for the new entry (e.g. CSS, HTML, Django):
+        <!-- the name="article_name" field required to access data in views.py -->
+        <input type="text" name="article_name" autocomplete="off" required>
+    </p>
+
+    <!-- the  name="content" field required to access data in views.py -->
+    <textarea style="height: 50vh;" name="content"></textarea>
+    <br>
+    <input type="submit" value="Submit" class="btn btn-primary">
+</form>
+
+{% endblock %}

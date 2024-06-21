@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
+        <!-- Adding below bootstrap stuff to use the accordion in bootstrap 4 -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+        </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+        </script>
+        <!-- Adding some styling here, as for some reason it did not work in the css stylesheet file.
+            Making the wiki sidebar a "sticky" sidebar, so it's always 100% of the height of the screen
+            otherwise there was some blank space when one used the "Markdown Syntax Help" accordion
+            on the "create_new_page" route
+            code found here: https://www.digitalocean.com/community/tutorials/how-to-build-multiple-stacking-sticky-sidebars-with-pure-css-and-bootstrap-4-->
+        <style>
+            .sidebar {
+                background-color: #f0f0f0;
+                padding: 20px;
+                height: 100vh;
+                position: sticky;
+                top: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="row full-height">
+            <div class="sidebar col-lg-2 col-md-3">
+                <h2>Wiki</h2>
+                <form action="{% url 'search' %}" method="GET">
+                    <!-- code below is needed for the search function:
+                    form action="{% url 'search' %}" method="GET"
+                    -->
+                    <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
+                </form>
+                <div>
+                    <a href="{% url 'index' %}">Home</a>
+                </div>
+                <div>
+                    <!-- create "create_new_page.html and link it!!! -->
+                    <a href="{% url 'create_new_page' %}">Create New Page</a>
+                </div>
+                <div>
+                    <!-- create "random_page.html and link it!!! -->
+                    <a href="{% url 'random_page' %}">Random Page</a>
+                </div>
+                {% block nav %}
+                {% endblock %}
+            </div>
+            <div class="main col-lg-10 col-md-9">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+
+    </body>
+
+</html>
