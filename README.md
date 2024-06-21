@@ -16,22 +16,22 @@ The project basically demonstrates basic CRUD (Create, Read, Update, Delete) ope
 ## Project Structure 
 Key files and directories:
 
-manage.py: Django's command-line utility for administrative tasks.
-wiki/: Main project directory containing core settings and configurations.
-settings.py: Configuration settings for the Django project.
-urls.py: URL declarations for the project.
-encyclopedia/: Main app directory for the encyclopedia functionalities.
-views.py: Contains the views for handling requests and responses.
-urls.py: URL declarations specific to the encyclopedia app.
-templates/encyclopedia/: Directory for HTML templates.
-layout.html: Base template with common structure.
-index.html: Template for the homepage listing all articles.
-wiki.html: Template for displaying individual articles.
-create_new_page.html: Template for creating new articles.
-edit_page.html: Template for editing existing articles.
-didyoumean.html: Template for search suggestions.
-static/: Directory for static files like CSS and images.
-util.py: Contains utility functions for interacting with markdown files.
+- manage.py: Django's command-line utility for administrative tasks.
+- wiki/: Main project directory containing core settings and configurations.
+- settings.py: Configuration settings for the Django project.
+- urls.py: URL declarations for the project.
+- encyclopedia/: Main app directory for the encyclopedia functionalities.
+- views.py: Contains the views for handling requests and responses.
+- urls.py: URL declarations specific to the encyclopedia app.
+- templates/encyclopedia/: Directory for HTML templates.
+- layout.html: Base template with common structure.
+- index.html: Template for the homepage listing all articles.
+- wiki.html: Template for displaying individual articles.
+- create_new_page.html: Template for creating new articles.
+- edit_page.html: Template for editing existing articles.
+- didyoumean.html: Template for search suggestions.
+- static/: Directory for static files like CSS and images.
+- util.py: Contains utility functions for interacting with markdown files.
 
 
 
