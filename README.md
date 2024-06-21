@@ -8,8 +8,9 @@
 
 
 ## Overview
-This project is a simplified version of Wikipedia. The goal is to create a dynamic encyclopedia where users can search, read, create, and edit articles using Django. 
-The project basically demonstrates basic CRUD (Create, Read, Update, Delete) operations, handling markdown content, and implementing search functionality.
+This project is a simplified version of Wikipedia. The goal is to create a dynamic encyclopedia where users can search, read, create, and edit articles using Django.
+
+Instead of a traditional database, this project uses markdown files to store article content. It demonstrates basic CRUD (Create, Read, Update, Delete) operations, handling markdown content, and implementing search functionality.
 
 
 
